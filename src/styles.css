@@ -265,4 +265,11 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   .flow { overflow-x: auto; }
   .topbar .ghost span, .brand b { display: none; }
   .modal-body { grid-template-columns: 1fr; }
+  .topbar { gap: 4px; padding: 0 8px; }
+  .topbar .ghost { padding: 0 9px; }
+  .confirm { flex: none; padding: 0 10px; font-size: 13px; }
+}
+/* Confirm Model must always fit. Save stays available in the Project tab and through autosave. */
+@media (max-width: 640px) {
+  .hide-tiny, .brand { display: none; }
 }

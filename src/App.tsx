@@ -49,7 +49,7 @@ function TopBar({ onLeft, onRight }: { onLeft: () => void; onRight: () => void }
       <div className="spacer" />
       <button className="icon" title="Undo (Ctrl+Z)" disabled={!canUndo} onClick={undo} data-testid="undo"><Undo2 size={17} /></button>
       <button className="icon" title="Redo (Ctrl+Y)" disabled={!canRedo} onClick={redo} data-testid="redo"><Redo2 size={17} /></button>
-      <button className="ghost" title="Save in this browser (Ctrl+S)" onClick={saveNow} data-testid="save"><Save size={16} /><span>Save</span></button>
+      <button className="ghost hide-tiny" title="Save in this browser (Ctrl+S)" onClick={saveNow} data-testid="save"><Save size={16} /><span>Save</span></button>
       <button
         className={`ghost${review ? ' active' : ''}`}
         title="See your model without tools, slowly turning"
@@ -64,7 +64,7 @@ function TopBar({ onLeft, onRight }: { onLeft: () => void; onRight: () => void }
       <button className="confirm" onClick={() => setUI({ showConfirm: true, reviewMode: false })} data-testid="confirm-model">
         <PackageCheck size={18} />Confirm Model
       </button>
-      <button className="icon" title="Show the quick guide" onClick={() => setUI({ showGuide: true })}><CircleHelp size={17} /></button>
+      <button className="icon hide-tiny" title="Show the quick guide" onClick={() => setUI({ showGuide: true })}><CircleHelp size={17} /></button>
       <button className="icon only-narrow" onClick={onRight} aria-label="Toggle right panel"><PanelRight size={18} /></button>
     </header>
   );

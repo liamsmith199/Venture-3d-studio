@@ -282,7 +282,13 @@ function CameraRig() {
 
   useEffect(() => {
     pending.current = cmd.preset;
+    userMoved.current = false;
   }, [cmd]);
+
+  // Keep the model framed when the window changes, unless the student has moved the camera.
+  useEffect(() => {
+    if (!userMoved.current) pending.current = useStore.getState().cameraCmd.preset;
+  }, [size.width, size.height]);
 
   useFrame((_, dt) => {
     const c = controls.current;
@@ -374,9 +380,7 @@ function CameraRig() {
         }}
         onStart={() => {
           anim.current = null;
-          if (!userMoved.current) {
-            userMoved.current = true;
-          }
+          userMoved.current = true;
           useStore.getState().mark('explored');
         }}
       />

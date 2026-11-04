@@ -558,6 +558,16 @@ await T('template-concept').click();
 await wait(1000);
 check('Concept starter can be reopened', (await state(`(s) => s.project.modelName`)) === 'Doctor Mascot');
 
+section('Screen sizes');
+for (const [w, h] of [[1280, 720], [1024, 768], [820, 1000], [390, 800]]) {
+  await page.setViewportSize({ width: w, height: h });
+  await wait(1200);
+  const box = await T('confirm-model').boundingBox();
+  check(`Confirm Model is fully on screen at ${w}px wide`, !!box && box.x >= 0 && box.x + box.width <= w, box ? `right edge ${Math.round(box.x + box.width)}` : 'not visible');
+  await page.screenshot({ path: join(out, `size-${w}.png`) });
+}
+await page.setViewportSize({ width: 1440, height: 900 });
+
 if (deliverAt) {
   section('Create the clean deliverable');
   const clean = await context.newPage();

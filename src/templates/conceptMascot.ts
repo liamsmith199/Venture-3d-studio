@@ -164,8 +164,8 @@ function appleProfile(): Vec2[] {
   const pts: Vec2[] = [];
   for (let i = 0; i <= 24; i++) {
     const t = (i / 24) * Math.PI;
-    // Heart-shaped section gives the dimples at the stem and base.
-    const r = 0.15 * Math.sin(t) * (1 + 0.14 * Math.cos(t));
+    // t runs from the base up, so shrinking near t = 0 makes the apple wider at the shoulders.
+    const r = 0.15 * Math.sin(t) * (1 - 0.14 * Math.cos(t));
     const y = -0.15 * Math.cos(t) * (1 - 0.18 * Math.sin(t) * Math.sin(t));
     pts.push([Math.max(r, 0.0001), y]);
   }
