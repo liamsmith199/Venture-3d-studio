@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%235fd6ae' d='M16 2 29 9.5v13L16 30 3 22.5v-13z'/%3E%3Cpath fill='%232f7f6a' d='M16 16v14L3 22.5v-13z'/%3E%3C/svg%3E" />
+    <title>GLB Check Viewer</title>
+    <style>
+      :root { color-scheme: dark; font-family: "Segoe UI", system-ui, sans-serif; }
+      html, body { margin: 0; height: 100%; background: #10151a; color: #e8eeeb; }
+      canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+      #bar { position: fixed; top: 16px; left: 16px; right: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 10px 14px; background: #1b2329e6; border: 1px solid #33404a; border-radius: 10px; z-index: 2; }
+      #bar label { font-weight: 600; cursor: pointer; padding: 6px 12px; background: #5fd6ae; color: #08231a; border-radius: 7px; }
+      #bar input { display: none; }
+      #status { font-size: 14px; color: #b7c5bf; }
+    </style>
+  </head>
+  <body>
+    <div id="bar">
+      <label>Open a .glb file<input id="file" type="file" accept=".glb,model/gltf-binary" /></label>
+      <span id="status">This page uses only Three.js, with no studio code, to prove a GLB works on its own.</span>
+    </div>
+    <script type="module" src="/src/viewer/viewer.ts"></script>
+  </body>
+</html>
